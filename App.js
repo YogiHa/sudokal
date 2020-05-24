@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, Platform } from 'react-native';
-import Sudoku from './Sudoku';
+import SudokuView from './SudokuView';
 import { styles } from './styles';
 
 export default function App() {
@@ -57,7 +57,7 @@ export default function App() {
       <View style={styles.flexOne}>
         {initPuzzle.length ? (
           <View style={styles.flexOne}>
-            <Sudoku initPuzzle={initPuzzle} setInitPuzzle={setInitPuzzle} />
+            <SudokuView initPuzzle={initPuzzle} setInitPuzzle={setInitPuzzle} />
           </View>
         ) : (
           <View style={styles.container}>

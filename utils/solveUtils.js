@@ -1,4 +1,4 @@
-export const getSqure = (rowPosition, columnPosition, arr) => {
+const getSqure = (rowPosition, columnPosition, arr) => {
   let squre = [];
   let getSqurePlace = (position) => {
     if (position < 3) return 0;
@@ -14,6 +14,14 @@ export const getSqure = (rowPosition, columnPosition, arr) => {
   return squre;
 };
 
+export const isInConflict = (i, j, num, valArr) => {
+  let conflictBool = (arr) => arr.filter((cell) => cell == num).length > 1;
+  return (
+    conflictBool(valArr.map((row) => row[j])) ||
+    conflictBool(valArr[i]) ||
+    conflictBool(getSqure(i, j, valArr))
+  );
+};
 const checkPosibiliets = (rowPosition, columnPosition, arr) => {
   let squre = getSqure(rowPosition, columnPosition, arr);
   let posibilities = [];
@@ -51,6 +59,12 @@ export const addVerifyNumbers = (arr, changed = [], hint = false) => {
   return changed;
 };
 
+export const isSolved = (arr) =>
+  ![].concat.apply(
+    [],
+    arr.map((row) => row.filter((num) => num == 0))
+  ).length;
+
 export const solve = (arr) => {
   let changed = [];
   try {
@@ -58,25 +72,14 @@ export const solve = (arr) => {
   } catch {
     return;
   }
-  if (
-    [].concat.apply(
-      [],
-      arr.map((row) => row.filter((num) => num == 0))
-    ).length
-  ) {
+  if (!isSolved(arr)) {
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         if (arr[i][j] !== 0) continue;
         let posibilities = checkPosibiliets(i, j, arr);
         if (!posibilities.length) return;
         for (let k = 0; k <= posibilities.length; k++) {
-          if (
-            ![].concat.apply(
-              [],
-              arr.map((row) => row.filter((num) => num == 0))
-            ).length
-          )
-            break;
+          if (isSolved(arr)) break;
           if (k == posibilities.length) {
             changed.map((position) => (arr[position.i][position.j] = 0));
             arr[i][j] = 0;

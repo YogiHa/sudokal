@@ -54,26 +54,27 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flex: 0.8,
     flexDirection: 'row',
-    width: Dimensions.get('window').width / 1.5,
+    width: Dimensions.get('window').width / 1.1,
   },
   borderTop: {
-    borderTopWidth: 1,
+    borderTopWidth: 2,
     borderTopColor: 'black',
   },
   borderBottom: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     borderBottomColor: 'black',
   },
   borderLeft: {
-    borderLeftWidth: 1,
+    borderLeftWidth: 2,
     borderLeftColor: 'black',
   },
   borderRight: {
-    borderRightWidth: 1,
+    borderRightWidth: 2,
     borderRightColor: 'black',
   },
+
   cell: {
-    width: '15%',
+    width: '11%',
     textAlign: 'center',
     margin: 1,
     backgroundColor: '#f5f5f5',
@@ -102,5 +103,34 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#79cdcd',
+  },
+  zoomWrapper: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    backgroundColor: '#6988a2',
+  },
+  zoomContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  zoomBar: {
+    position: 'absolute',
+    right: 0,
+    zIndex: 2,
+    flex: 1,
+    justifyContent: 'space-around',
+  },
+  zoomButton: {
+    marginBottom: 10,
+    borderRadius: 30,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#79cdcd',
+    opacity: 0.6,
   },
 });

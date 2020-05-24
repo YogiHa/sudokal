@@ -1,12 +1,12 @@
 import { Alert, Platform } from 'react-native';
 
-export default function customAlert(title, text = '') {
+export default function customAlert(title) {
   if (Platform.OS == 'web') {
-    alert(title, text);
+    alert(title);
   } else {
     Alert.alert(
       title,
-      text,
+      '',
       [
         {
           text: 'Continue',
